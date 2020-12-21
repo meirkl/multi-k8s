@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          # image: meirkell/multi-client
+          image: 965275292667.dkr.ecr.us-east-1.amazonaws.com/multi-client
+          ports:
+            - containerPort: 3000
+
